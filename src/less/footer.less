@@ -1,0 +1,31 @@
+.tab {
+  position: relative;
+  float: left;
+  width: 33.334%;
+  text-align: center;
+  text-decoration: none;
+  font-size: .14rem;
+  line-height: .4rem;
+  line-height: .4rem;
+  color: #333;
+  box-sizing: border-box;
+}
+.tab:first-child::after,
+.tab:nth-child(2)::after {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  content: '';
+  width: 0;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  -webkit-transform: scaleX(0.5);
+}
+.tab:last-child {
+  border-right: none;
+}
+.tab.active {
+  background: #ffb20078;
+  font-weight: 600;
+}

@@ -1,0 +1,37 @@
+@layout-position: {
+  position: absolute;
+  left: 0;
+  width: 100%;
+};
+
+/* header */
+.header {
+  @layout-position();
+  top: 0;
+  height: .5rem;
+  font-size: .16rem;
+  line-height: .5rem;
+  color: #fff;
+  text-align: center;
+  background: #47707A;
+}
+
+/* main */
+.main {
+  @layout-position();
+  display: flex;
+  top: .5rem;
+  bottom: .4rem;
+  overflow: scroll;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  background: #ded9d6e8;
+}
+
+/* footer */
+.footer {
+  @layout-position();
+  bottom: 0;
+  height: .4rem;
+  background: #f7f7f7;
+}
