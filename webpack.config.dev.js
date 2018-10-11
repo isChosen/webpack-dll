@@ -12,7 +12,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
@@ -171,13 +170,13 @@ module.exports = {
   },
 
   plugins: [
-    new DllReferencePlugin({
+    new webpack.DllReferencePlugin({
       manifest: require('./dist/dll/react.manifest.json')
     }),
-    new DllReferencePlugin({
+    new webpack.DllReferencePlugin({
       manifest: require('./dist/dll/polyfill.manifest.json')
     }),
-    new DllReferencePlugin({
+    new webpack.DllReferencePlugin({
       manifest: require('./dist/dll/echarts.manifest.json')
     }),
     new webpack.HotModuleReplacementPlugin(),

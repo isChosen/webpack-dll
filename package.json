@@ -44,6 +44,6 @@
   "scripts": {
     "dll-build": "webpack --progress --config webpack.config.dll.js",
     "build": "webpack --progress --config webpack.config.dev.js",
-    "server": "webpack-dev-server --config webpack.config.dev.js"
+    "server": "npm run dll-build && webpack-dev-server --config webpack.config.dev.js"
   }
 }
