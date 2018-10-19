@@ -2,7 +2,7 @@
  * @Author: detcx 
  * @Date: 2018-09-30 09:44:59 
  * @Last Modified by: Chosen
- * @Last Modified time: 2018-10-09 09:56:10
+ * @Last Modified time: 2018-10-19 17:19:26
  * @description development configuration
  */
 
@@ -195,8 +195,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       title: 'Oh-webpack-dll',
-      favicon: __dirname + '/src/favicon.ico',
-      template: __dirname + '/template/index.html'
+      favicon: __dirname + '/favicon.ico',
+      template: __dirname + '/index.html'
     }),
     new CleanWebpackPlugin(['dist'], {exclude: ['dll']}),
     new CopyWebpackPlugin([
