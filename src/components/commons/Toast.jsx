@@ -8,10 +8,15 @@ class Toast extends Component {
         position: 'fixed',
         left: '50%',
         top: '50%',
+        width: '180px',
         padding: '10px',
-        background: 'rgba(0, 0, 0, .3)',
+        marginLeft: '-90px',
+        textAlign: 'center',
         color: '#fff',
-        zIndex: 999
+        zIndex: 999,
+        borderRadius: '4px',
+        boxSizing: 'boder-box',
+        background: 'rgba(0, 0, 0, .3)'
       }
     };
   }

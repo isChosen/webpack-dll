@@ -1,9 +1,8 @@
-/**
- * @Author: detcx 
- * @Date: 2018-09-30 09:44:59 
- * @Last Modified by: Chosen
- * @Last Modified time: 2018-10-19 17:19:26
- * @description development configuration
+/*
+ * @Author: Detcx 
+ * @Date: 2018-11-14 22:14:49 
+ * @Last Modified by: Detcx
+ * @Last Modified time: 2018-11-14 23:08:46
  */
 
 const path = require('path');
@@ -12,18 +11,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 module.exports = {
-  mode: 'development', // development production
+  mode: 'development',
   devtool: false,
   entry: './src/components/index.js',
   output: {
     filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].[hash:6].js',
-    path: path.resolve(__dirname, 'dist'), // 打包后的目录，必须是绝对路径
-    publicPath: '/' // 默认是 '/', 但现在静态资源地址是 dist
+    chunkFilename: 'js/[name].[chunkhash:6].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   optimization: {
     splitChunks: {
@@ -36,7 +34,7 @@ module.exports = {
           name: 'chunk-libs',
           test: /[\\/]node_modules[\\/]/i,
           priority: 10,
-          chunks: 'initial' // 只打包初始时依赖的第三方
+          chunks: 'initial'
         },
         antDesign: {
           name: 'chunk-antd',
@@ -56,7 +54,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: 'babel-loader'
       },
@@ -125,26 +123,6 @@ module.exports = {
               name: '[name][hash:4].[ext]',
               outputPath: 'images/'
             }
-          },
-          { // 压缩图片
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              },
-              optipng: {
-                enabled: false
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false
-              },
-              webp: {quality: 75}
-          }
           }
         ]
       }
@@ -152,15 +130,14 @@ module.exports = {
   },
 
   devServer: {
-    open: true,
-    port: '8050',
     hot: true,
+    open: true,
     https: false,
+    port: '8050',
     publicPath: '/',
-    contentBase: path.resolve(__dirname, 'dist'),
     host: 'localhost',
-    disableHostCheck: true, // 不允许绕过服务器
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
   },
 
   resolve: {
@@ -180,21 +157,13 @@ module.exports = {
       manifest: require('./dist/dll/echarts.manifest.json')
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // 只压缩分离出来的 css
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: {
-        discardComments: {removeAll: true}
-      },
-      canPrint: true // 是否将插件信息打印到控制台
-    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-      chunkFilename: 'css/id[id]hash[hash:6].css', // 供应商(vendor)样式文件
+      chunkFilename: 'css/id[id]hash[chunkhash:6].css', // 供应商(vendor)样式文件
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'Oh-webpack-dll',
+      title: 'webpack-dll',
       favicon: __dirname + '/favicon.ico',
       template: __dirname + '/index.html'
     }),
