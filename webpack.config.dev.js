@@ -2,7 +2,7 @@
  * @Author: Detcx 
  * @Date: 2018-11-14 22:14:49 
  * @Last Modified by: Detcx
- * @Last Modified time: 2018-11-14 23:08:46
+ * @Last Modified time: 2018-11-15 21:59:56
  */
 
 const path = require('path');
@@ -16,10 +16,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'development',
   devtool: false,
-  entry: './src/components/index.js',
+  entry: './src/components/index.jsx',
   output: {
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].[chunkhash:6].js',
+    filename: 'js/[name].bundle[hash:6].js',
+    chunkFilename: 'js/[name][chunkhash:6].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -158,8 +158,8 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/id[id]hash[chunkhash:6].css', // 供应商(vendor)样式文件
+      filename: 'css/[name][contenthash:6].css',
+      chunkFilename: 'css/[id][contenthash:6].css', // 供应商(vendor)样式文件
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',

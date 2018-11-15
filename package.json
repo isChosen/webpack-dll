@@ -42,7 +42,7 @@
   },
   "scripts": {
     "build-dll": "webpack --progress --config webpack.config.dll.js",
-    "build": "webpack --progress --config webpack.config.dev.js",
-    "server": "npm run build-dll && webpack-dev-server --config webpack.config.dev.js"
+    "build-dev": "webpack --progress --config webpack.config.dev.js",
+    "server-dev": "webpack-dev-server --config webpack.config.dev.js"
   }
 }
