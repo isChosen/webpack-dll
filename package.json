@@ -41,7 +41,7 @@
     "weui": "^1.1.3"
   },
   "scripts": {
-    "build-dll": "webpack --progress --config webpack.config.dll.js",
+    "build-dll": "webpack --progress --config webpack.config.dll.dev.js",
     "build-dev": "webpack --progress --config webpack.config.dev.js",
     "server-dev": "webpack-dev-server --config webpack.config.dev.js"
   }
