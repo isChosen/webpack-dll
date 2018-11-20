@@ -2,7 +2,7 @@
  * @Author: Detcx 
  * @Date: 2018-11-14 22:14:49 
  * @Last Modified by: Detcx
- * @Last Modified time: 2018-11-15 21:59:56
+ * @Last Modified time: 2018-11-20 17:41:07
  */
 
 const path = require('path');
@@ -19,7 +19,7 @@ module.exports = {
   entry: './src/components/index.jsx',
   output: {
     filename: 'js/[name].bundle[hash:6].js',
-    chunkFilename: 'js/[name][chunkhash:6].js',
+    chunkFilename: 'js/[name].bundle[chunkhash:6].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -159,7 +159,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name][contenthash:6].css',
-      chunkFilename: 'css/[id][contenthash:6].css', // 供应商(vendor)样式文件
+      chunkFilename: 'css/[name][contenthash:6].css', // 供应商(vendor)样式文件
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
